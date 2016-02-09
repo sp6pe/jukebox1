@@ -6,11 +6,10 @@
   <link href="/bootstrap-dark.css" rel="stylesheet" />
   <link href="/style.css" rel="stylesheet" />
 </head>
-<body ng-app ="juke" ng-controller="MainCtrl">
+<body ng-app ="juke" >
   <div id="main" class="container-fluid" >
 
     <div class="col-xs-2">
-
       <sidebar>
         <img src="juke.svg" class="logo">
         <section>
@@ -22,7 +21,7 @@
     </div>
    
     <div class="col-xs-10" >
-      <div class="album">
+      <div class="album" ng-controller="albumCtrl">
     <p>
         <h3>{{album.name}}</h3>
         <img src={{album.imageUrl}} class="img-thumbnail">
@@ -54,7 +53,7 @@
     </div>
     </div>
 
-    <footer >
+    <footer ng-controller = "playerCtrl">
       <div ng-hide='!currentSong'>
        <div class="pull-left">
         <button class="btn btn-default" ng-click ="prev()">
@@ -67,6 +66,9 @@
         <button class="btn btn-default" ng-click ="next()">
           <span class="glyphicon glyphicon-step-forward"></span>
         </button>
+        <button class="btn btn-default">
+          <span class="glyphicon glyphicon-random"></span>
+        </button>
       </div>
       <div class="bar">
         <div class="progress">
@@ -78,7 +80,9 @@
 
   </div>
   <script src='/angular/angular.js'></script>
-  <script src='/angular.js'></script>
+  <script src='/albumCtrl.js'></script>
+  <script src='/playerCtrl.js'></script>
+
 </body>
 
 </html>
