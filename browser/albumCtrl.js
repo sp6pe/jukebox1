@@ -18,7 +18,7 @@ app.controller('albumCtrl',function($rootScope, $scope, $http){
 
      $scope.playAudio = function (song){     	
      	if($scope.currentSong === song){
-     		if(!$scope.paused){
+     		if($scope.playingSong){
 	     		audio.pause();
 	     		$scope.playingSong = null;
 	     	}else {
@@ -32,8 +32,6 @@ app.controller('albumCtrl',function($rootScope, $scope, $http){
 			$scope.currentSong = song;
 			$scope.playingSong = song._id;
 		}
-
-     $scope.paused = audio.paused;
 
      $rootScope.$broadcast('playBtn', {
         currentSong: $scope.currentSong,

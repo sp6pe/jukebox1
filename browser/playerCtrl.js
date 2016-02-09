@@ -49,11 +49,29 @@ app.controller('playerCtrl',function($rootScope, $scope, $http){
     $scope.shuffle = function(){
     	$rootScope.$broadcast('shuffle');
     };
-	document.getElementsByClassName('progress')[0].addEventListener('click', function (e) {
+
+    var clickedValue;
+    var mDown = false;
+
+	document.getElementsByClassName('progress')[0].addEventListener('mousedown', function (e) {
    		var x = e.pageX - this.offsetLeft;
-   		var clickedValue = x / this.offsetWidth;
+   		clickedValue = x / this.offsetWidth;
+        mDown = true;
 
 	   	$rootScope.$broadcast('scrubbing', clickedValue);
 	});
+
+    document.getElementsByClassName('progress')[0].addEventListener('mousemove', function (e) {
+        if (!mDown) return;
+
+        var x = e.pageX - this.offsetLeft;
+        clickedValue = x / this.offsetWidth;
+
+        $rootScope.$broadcast('scrubbing', clickedValue);
+    });
+
+    document.getElementsByClassName('progress')[0].addEventListener('mouseup', function (e) {
+        mDown = false;
+    });
 
 });

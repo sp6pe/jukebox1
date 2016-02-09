@@ -5,6 +5,9 @@
   <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
   <link href="/bootstrap-dark.css" rel="stylesheet" />
   <link href="/style.css" rel="stylesheet" />
+  <script src='/angular/angular.js' defer></script>
+  <script src='/albumCtrl.js' defer></script>
+  <script src='/playerCtrl.js' defer></script>
 </head>
 <body ng-app ="juke" >
   <div id="main" class="container-fluid" >
@@ -45,8 +48,8 @@
                     </button>
                 </td>
                 <td>{{song.name}}</td>
-                <td><span ng-repeat="artist in song.artists">{{artist.name}}{{$last?'' : ', '}}</span></td>
-                <td> <span ng-repeat ="genre in song.genres">{{genre}}{{$last?'' : ', '}}</span></td>
+                <td><span ng-repeat="artist in song.artists">{{artist.name}}{{$last ? '' : ', '}}</span></td>
+                <td>{{ song.genres.join(", ") }}</td>
             </tr>
         </tbody>
     </table>
@@ -79,10 +82,6 @@
     </footer>
 
   </div>
-  <script src='/angular/angular.js'></script>
-  <script src='/albumCtrl.js'></script>
-  <script src='/playerCtrl.js'></script>
-
 </body>
 
 </html>
