@@ -53,20 +53,20 @@
     </div>
     </div>
 
-    <footer ng-controller = "playerCtrl">
+    <footer ng-controller = "playerCtrl" ng-keyup = "keyboardInput($event.keyCode)">
       <div ng-hide='!currentSong'>
        <div class="pull-left">
         <button class="btn btn-default" ng-click ="prev()">
           <span class="glyphicon glyphicon-step-backward"></span>
         </button>
         <button class="btn btn-default">
-          <span class="glyphicon glyphicon-play" ng-click="playAudio(currentSong)" 
+          <span class="glyphicon glyphicon-play"  ng-click="play()" 
           ng-class='{"glyphicon-pause": playingSong}'></span>
         </button>
         <button class="btn btn-default" ng-click ="next()">
           <span class="glyphicon glyphicon-step-forward"></span>
         </button>
-        <button class="btn btn-default">
+        <button class="btn btn-default" ng-click = "shuffle()">
           <span class="glyphicon glyphicon-random"></span>
         </button>
       </div>
